@@ -1,48 +1,92 @@
 #include <stdio.h>
+#include <float.h>
 
-int main(int argc, char const *argv[]) {
-
-  int Opperaton = menu();
-  double[] Opperators = GetOpperators();
-  double number = performOpperation(Opperaton, Opperators)
-
-
-  return 0;
+void GetOpperators(double* firstOpperant, double* secondOpperant)
+{
+  printf("Please enter Opperators\n");
+  printf("First Opperant: ");
+  scanf("%lf", firstOpperant);
+  printf("Second Opperant: ");
+  scanf("%lf", secondOpperant);
+}
+double Divide(double firstOpperant, double secondOpperant)
+{
+  if (secondOpperant == 0) {
+    printf("Division by Zero\n");
+    do {
+      printf("please enter a number for Second Opperant that is not null ");
+      scanf("%lf",&secondOpperant);
+    } while(secondOpperant == 0);
+  }
+  return firstOpperant / secondOpperant;
+}
+double Multiply(double firstOpperant, double secondOpperant)
+{
+  return firstOpperant * secondOpperant;
+}
+double Subtract(double firstOpperant, double secondOpperant)
+{
+  return firstOpperant - secondOpperant;
+}
+double Add(double firstOpperant, double secondOpperant)
+{
+  return firstOpperant + secondOpperant;
+}
+double performOpperation(int opperaton)
+{
+  double result = 0;
+  switch (opperaton) {
+    double firstOpperant;
+    double secondOpperant;
+    case 1:
+      GetOpperators(&firstOpperant, &secondOpperant);
+      result = Add(firstOpperant, secondOpperant);
+      break;
+    case 2:
+      GetOpperators(&firstOpperant, &secondOpperant);
+      result = Subtract(firstOpperant, secondOpperant);
+      break;
+    case 3:
+      GetOpperators(&firstOpperant, &secondOpperant);
+      result = Multiply(secondOpperant ,firstOpperant);
+      break;
+    case 4:
+      GetOpperators(&firstOpperant, &secondOpperant);
+      result = Divide(firstOpperant, secondOpperant);
+      break;
+    case -1:
+      result = -1;
+      break;
+  }
+  return result;
 }
 
 int menu()
 {
-  printf("Choose Opperaton: Add (1) Subtract(2) Multiply(3) Divide(4) End Program (-1)\n");
-  int input = scanf("%d\n", );
-  return input;
+  printf("Add(1)\n");
+  printf("Subtract(2)\n");
+  printf("Multiply(3)\n");
+  printf("Divide(4)\n");
+  printf("Stop Program(-1)\n");
+  printf("Enter Opperaton :");
+
+  int OpperatonType;
+  scanf("%d",&OpperatonType);
+  printf(" \n" );
+  return OpperatonType;
 }
-double performOpperation(int Opperaton, double[] Opperators)
+int main(int argc, char const *argv[])
 {
-  double result;
-  switch (Opperaton) {
-    case 1:
-      break;
-    case 2:
-      break;
-    case 3:
-      break;
-    case 4:
-      break;
-    case 5:
-      break;
-    default:
-      break;
+  double result = 0;
+  do {
+  int opperaton = menu();
+  result = performOpperation(opperaton);
+  if(opperaton != -1)
+  {
+  printf("Result: ");
+  printf("%lf\n",result );
   }
-  r
-}
-double[] GetOpperators()
-{
-  printf("First Opperant : ", );
-  double firstOpperant = scanf("%f\n", );
-  printf("Second Opperant : ", );
-  double secondOpperant = scanf("%f\n", );
-  
-  return firstOpperant;
-}
-int Add(int argc, char const *argv[]) {
+  printf(" \n" );
+  } while(result != -1);
+ return 0;
 }
